@@ -4,6 +4,7 @@ use std::fs::File;
 use std::io::Write;
 
 mod bls12_381;
+mod bluesky;
 mod utils;
 
 const NUM_ROUNDS: usize = 8 + 56;
