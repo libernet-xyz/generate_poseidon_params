@@ -3,6 +3,11 @@ use primitive_types::U256;
 use std::fs::File;
 use std::io::Write;
 
+mod v1 {
+    pub mod bls12_381;
+    pub mod bluesky;
+}
+
 mod v2 {
     pub mod bls12_381;
     pub mod bluesky;
@@ -27,6 +32,18 @@ fn write_constants<const N: usize, const M: usize>(
     Ok(())
 }
 
+fn write_constants_v1_t3() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 3>(&*v1::bls12_381::RC3, "out/v1/arc_t3.bin")?;
+    write_constants::<3, 3>(&*v1::bls12_381::MDS3, "out/v1/mds_t3.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_t4() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 4>(&*v1::bls12_381::RC4, "out/v1/arc_t4.bin")?;
+    write_constants::<4, 4>(&*v1::bls12_381::MDS4, "out/v1/mds_t4.bin")?;
+    Ok(())
+}
+
 fn write_constants_v2_t3() -> Result<()> {
     write_constants::<NUM_ROUNDS, 3>(&*v2::bls12_381::RC3, "out/v2/arc_t3.bin")?;
     write_constants::<3, 3>(&*v2::bls12_381::FL3, "out/v2/fl_t3.bin")?;
@@ -42,6 +59,8 @@ fn write_constants_v2_t4() -> Result<()> {
 }
 
 fn main() -> Result<()> {
+    write_constants_v1_t3()?;
+    write_constants_v1_t4()?;
     write_constants_v2_t3()?;
     write_constants_v2_t4()?;
     Ok(())

@@ -754,3 +754,20 @@ lazy_static! {
         ],
     ];
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_rc3_format() {
+        assert_eq!(RC3.len(), 64);
+        assert!(RC3.iter().all(|row| row.len() == 3));
+    }
+
+    #[test]
+    fn test_rc4_format() {
+        assert_eq!(RC4.len(), 64);
+        assert!(RC4.iter().all(|row| row.len() == 4));
+    }
+}
