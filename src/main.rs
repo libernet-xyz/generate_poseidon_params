@@ -32,36 +32,66 @@ fn write_constants<const N: usize, const M: usize>(
     Ok(())
 }
 
-fn write_constants_v1_t3() -> Result<()> {
-    write_constants::<NUM_ROUNDS, 3>(&*v1::bls12_381::RC3, "out/v1/arc_t3.bin")?;
-    write_constants::<3, 3>(&*v1::bls12_381::MDS3, "out/v1/mds_t3.bin")?;
+fn write_constants_v1_bls12_381_t3() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 3>(&*v1::bls12_381::RC3, "out/v1/bls12_381/arc_t3.bin")?;
+    write_constants::<3, 3>(&*v1::bls12_381::MDS3, "out/v1/bls12_381/mds_t3.bin")?;
     Ok(())
 }
 
-fn write_constants_v1_t4() -> Result<()> {
-    write_constants::<NUM_ROUNDS, 4>(&*v1::bls12_381::RC4, "out/v1/arc_t4.bin")?;
-    write_constants::<4, 4>(&*v1::bls12_381::MDS4, "out/v1/mds_t4.bin")?;
+fn write_constants_v1_bls12_381_t4() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 4>(&*v1::bls12_381::RC4, "out/v1/bls12_381/arc_t4.bin")?;
+    write_constants::<4, 4>(&*v1::bls12_381::MDS4, "out/v1/bls12_381/mds_t4.bin")?;
     Ok(())
 }
 
-fn write_constants_v2_t3() -> Result<()> {
-    write_constants::<NUM_ROUNDS, 3>(&*v2::bls12_381::RC3, "out/v2/arc_t3.bin")?;
-    write_constants::<3, 3>(&*v2::bls12_381::FL3, "out/v2/fl_t3.bin")?;
-    write_constants::<3, 3>(&*v2::bls12_381::PL3, "out/v2/pl_t3.bin")?;
+fn write_constants_v1_bluesky_t3() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 3>(&*v1::bluesky::RC3, "out/v1/bluesky/arc_t3.bin")?;
+    write_constants::<3, 3>(&*v1::bluesky::MDS3, "out/v1/bluesky/mds_t3.bin")?;
     Ok(())
 }
 
-fn write_constants_v2_t4() -> Result<()> {
-    write_constants::<NUM_ROUNDS, 4>(&*v2::bls12_381::RC4, "out/v2/arc_t4.bin")?;
-    write_constants::<4, 4>(&*v2::bls12_381::FL4, "out/v2/fl_t4.bin")?;
-    write_constants::<4, 4>(&*v2::bls12_381::PL4, "out/v2/pl_t4.bin")?;
+fn write_constants_v1_bluesky_t4() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 4>(&*v1::bluesky::RC4, "out/v1/bluesky/arc_t4.bin")?;
+    write_constants::<4, 4>(&*v1::bluesky::MDS4, "out/v1/bluesky/mds_t4.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_bls12_381_t3() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 3>(&*v2::bls12_381::RC3, "out/v2/bls12_381/arc_t3.bin")?;
+    write_constants::<3, 3>(&*v2::bls12_381::FL3, "out/v2/bls12_381/fl_t3.bin")?;
+    write_constants::<3, 3>(&*v2::bls12_381::PL3, "out/v2/bls12_381/pl_t3.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_bls12_381_t4() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 4>(&*v2::bls12_381::RC4, "out/v2/bls12_381/arc_t4.bin")?;
+    write_constants::<4, 4>(&*v2::bls12_381::FL4, "out/v2/bls12_381/fl_t4.bin")?;
+    write_constants::<4, 4>(&*v2::bls12_381::PL4, "out/v2/bls12_381/pl_t4.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_bluesky_t3() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 3>(&*v2::bluesky::RC3, "out/v2/bluesky/arc_t3.bin")?;
+    write_constants::<3, 3>(&*v2::bluesky::FL3, "out/v2/bluesky/fl_t3.bin")?;
+    write_constants::<3, 3>(&*v2::bluesky::PL3, "out/v2/bluesky/pl_t3.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_bluesky_t4() -> Result<()> {
+    write_constants::<NUM_ROUNDS, 4>(&*v2::bluesky::RC4, "out/v2/bluesky/arc_t4.bin")?;
+    write_constants::<4, 4>(&*v2::bluesky::FL4, "out/v2/bluesky/fl_t4.bin")?;
+    write_constants::<4, 4>(&*v2::bluesky::PL4, "out/v2/bluesky/pl_t4.bin")?;
     Ok(())
 }
 
 fn main() -> Result<()> {
-    write_constants_v1_t3()?;
-    write_constants_v1_t4()?;
-    write_constants_v2_t3()?;
-    write_constants_v2_t4()?;
+    write_constants_v1_bls12_381_t3()?;
+    write_constants_v1_bls12_381_t4()?;
+    write_constants_v1_bluesky_t3()?;
+    write_constants_v1_bluesky_t4()?;
+    write_constants_v2_bls12_381_t3()?;
+    write_constants_v2_bls12_381_t4()?;
+    write_constants_v2_bluesky_t3()?;
+    write_constants_v2_bluesky_t4()?;
     Ok(())
 }
