@@ -113,6 +113,20 @@ fn write_constants_v2_bluesky_t4() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v2_goldilocks_t12() -> Result<()> {
+    write_constants_u64::<30, 12>(&*v2::goldilocks::RC12, "out/v2/goldilocks/arc_t12.bin")?;
+    write_constants_u64::<12, 12>(&*v2::goldilocks::FL12, "out/v2/goldilocks/fl_t12.bin")?;
+    write_constants_u64::<12, 12>(&*v2::goldilocks::PL12, "out/v2/goldilocks/pl_t12.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_goldilocks_t16() -> Result<()> {
+    write_constants_u64::<30, 16>(&*v2::goldilocks::RC16, "out/v2/goldilocks/arc_t16.bin")?;
+    write_constants_u64::<16, 16>(&*v2::goldilocks::FL16, "out/v2/goldilocks/fl_t16.bin")?;
+    write_constants_u64::<16, 16>(&*v2::goldilocks::PL16, "out/v2/goldilocks/pl_t16.bin")?;
+    Ok(())
+}
+
 fn main() -> Result<()> {
     write_constants_v1_bls12_381_t3()?;
     write_constants_v1_bls12_381_t4()?;
@@ -124,5 +138,7 @@ fn main() -> Result<()> {
     write_constants_v2_bls12_381_t4()?;
     write_constants_v2_bluesky_t3()?;
     write_constants_v2_bluesky_t4()?;
+    write_constants_v2_goldilocks_t12()?;
+    write_constants_v2_goldilocks_t16()?;
     Ok(())
 }
