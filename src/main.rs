@@ -6,11 +6,13 @@ use std::io::Write;
 mod v1 {
     pub mod bls12_381;
     pub mod bluesky;
+    pub mod goldilocks;
 }
 
 mod v2 {
     pub mod bls12_381;
     pub mod bluesky;
+    pub mod goldilocks;
 }
 
 mod utils;
