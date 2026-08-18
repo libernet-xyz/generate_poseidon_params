@@ -1,4 +1,4 @@
-use crate::utils::from_hex;
+use crate::utils::from_hex_u256 as from_hex;
 use lazy_static::lazy_static;
 use primitive_types::U256;
 

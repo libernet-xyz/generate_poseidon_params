@@ -1,12 +1,5 @@
+use crate::utils::from_hex_u64 as from_hex;
 use lazy_static::lazy_static;
-
-fn from_hex(s: &'static str) -> u64 {
-    let digits = s
-        .strip_prefix("0x")
-        .or_else(|| s.strip_prefix("0X"))
-        .unwrap();
-    u64::from_str_radix(digits, 16).unwrap()
-}
 
 lazy_static! {
     pub static ref RC12: Vec<Vec<u64>> = vec![
