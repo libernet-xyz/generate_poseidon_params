@@ -7,6 +7,7 @@ mod v1 {
     pub mod bls12_381;
     pub mod bluesky;
     pub mod goldilocks;
+    pub mod schraderbrau;
 }
 
 mod v2 {
@@ -16,8 +17,6 @@ mod v2 {
 }
 
 mod utils;
-
-const NUM_ROUNDS: usize = 8 + 56;
 
 fn write_constants_u64<const N: usize, const M: usize>(
     values: &Vec<Vec<u64>>,
@@ -50,25 +49,25 @@ fn write_constants_u256<const N: usize, const M: usize>(
 }
 
 fn write_constants_v1_bls12_381_t3() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 3>(&*v1::bls12_381::RC3, "out/v1/bls12_381/arc_t3.bin")?;
+    write_constants_u256::<64, 3>(&*v1::bls12_381::RC3, "out/v1/bls12_381/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v1::bls12_381::MDS3, "out/v1/bls12_381/mds_t3.bin")?;
     Ok(())
 }
 
 fn write_constants_v1_bls12_381_t4() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 4>(&*v1::bls12_381::RC4, "out/v1/bls12_381/arc_t4.bin")?;
+    write_constants_u256::<64, 4>(&*v1::bls12_381::RC4, "out/v1/bls12_381/arc_t4.bin")?;
     write_constants_u256::<4, 4>(&*v1::bls12_381::MDS4, "out/v1/bls12_381/mds_t4.bin")?;
     Ok(())
 }
 
 fn write_constants_v1_bluesky_t3() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 3>(&*v1::bluesky::RC3, "out/v1/bluesky/arc_t3.bin")?;
+    write_constants_u256::<64, 3>(&*v1::bluesky::RC3, "out/v1/bluesky/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v1::bluesky::MDS3, "out/v1/bluesky/mds_t3.bin")?;
     Ok(())
 }
 
 fn write_constants_v1_bluesky_t4() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 4>(&*v1::bluesky::RC4, "out/v1/bluesky/arc_t4.bin")?;
+    write_constants_u256::<64, 4>(&*v1::bluesky::RC4, "out/v1/bluesky/arc_t4.bin")?;
     write_constants_u256::<4, 4>(&*v1::bluesky::MDS4, "out/v1/bluesky/mds_t4.bin")?;
     Ok(())
 }
@@ -85,29 +84,41 @@ fn write_constants_v1_goldilocks_t16() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v1_schraderbrau_t3() -> Result<()> {
+    write_constants_u256::<91, 3>(&*v1::schraderbrau::RC3, "out/v1/schraderbrau/arc_t3.bin")?;
+    write_constants_u256::<3, 3>(&*v1::schraderbrau::MDS3, "out/v1/schraderbrau/mds_t3.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_schraderbrau_t4() -> Result<()> {
+    write_constants_u256::<92, 4>(&*v1::schraderbrau::RC4, "out/v1/schraderbrau/arc_t4.bin")?;
+    write_constants_u256::<4, 4>(&*v1::schraderbrau::MDS4, "out/v1/schraderbrau/mds_t4.bin")?;
+    Ok(())
+}
+
 fn write_constants_v2_bls12_381_t3() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 3>(&*v2::bls12_381::RC3, "out/v2/bls12_381/arc_t3.bin")?;
+    write_constants_u256::<64, 3>(&*v2::bls12_381::RC3, "out/v2/bls12_381/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v2::bls12_381::FL3, "out/v2/bls12_381/fl_t3.bin")?;
     write_constants_u256::<3, 3>(&*v2::bls12_381::PL3, "out/v2/bls12_381/pl_t3.bin")?;
     Ok(())
 }
 
 fn write_constants_v2_bls12_381_t4() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 4>(&*v2::bls12_381::RC4, "out/v2/bls12_381/arc_t4.bin")?;
+    write_constants_u256::<64, 4>(&*v2::bls12_381::RC4, "out/v2/bls12_381/arc_t4.bin")?;
     write_constants_u256::<4, 4>(&*v2::bls12_381::FL4, "out/v2/bls12_381/fl_t4.bin")?;
     write_constants_u256::<4, 4>(&*v2::bls12_381::PL4, "out/v2/bls12_381/pl_t4.bin")?;
     Ok(())
 }
 
 fn write_constants_v2_bluesky_t3() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 3>(&*v2::bluesky::RC3, "out/v2/bluesky/arc_t3.bin")?;
+    write_constants_u256::<64, 3>(&*v2::bluesky::RC3, "out/v2/bluesky/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v2::bluesky::FL3, "out/v2/bluesky/fl_t3.bin")?;
     write_constants_u256::<3, 3>(&*v2::bluesky::PL3, "out/v2/bluesky/pl_t3.bin")?;
     Ok(())
 }
 
 fn write_constants_v2_bluesky_t4() -> Result<()> {
-    write_constants_u256::<NUM_ROUNDS, 4>(&*v2::bluesky::RC4, "out/v2/bluesky/arc_t4.bin")?;
+    write_constants_u256::<64, 4>(&*v2::bluesky::RC4, "out/v2/bluesky/arc_t4.bin")?;
     write_constants_u256::<4, 4>(&*v2::bluesky::FL4, "out/v2/bluesky/fl_t4.bin")?;
     write_constants_u256::<4, 4>(&*v2::bluesky::PL4, "out/v2/bluesky/pl_t4.bin")?;
     Ok(())
@@ -134,6 +145,8 @@ fn main() -> Result<()> {
     write_constants_v1_bluesky_t4()?;
     write_constants_v1_goldilocks_t12()?;
     write_constants_v1_goldilocks_t16()?;
+    write_constants_v1_schraderbrau_t3()?;
+    write_constants_v1_schraderbrau_t4()?;
     write_constants_v2_bls12_381_t3()?;
     write_constants_v2_bls12_381_t4()?;
     write_constants_v2_bluesky_t3()?;
