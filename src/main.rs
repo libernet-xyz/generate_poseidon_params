@@ -14,6 +14,7 @@ mod v2 {
     pub mod bls12_381;
     pub mod bluesky;
     pub mod goldilocks;
+    pub mod schraderbrau;
 }
 
 mod utils;
@@ -138,6 +139,20 @@ fn write_constants_v2_goldilocks_t16() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v2_schraderbrau_t3() -> Result<()> {
+    write_constants_u256::<91, 3>(&*v2::schraderbrau::RC3, "out/v2/schraderbrau/arc_t3.bin")?;
+    write_constants_u256::<3, 3>(&*v2::schraderbrau::FL3, "out/v2/schraderbrau/fl_t3.bin")?;
+    write_constants_u256::<3, 3>(&*v2::schraderbrau::PL3, "out/v2/schraderbrau/pl_t3.bin")?;
+    Ok(())
+}
+
+fn write_constants_v2_schraderbrau_t4() -> Result<()> {
+    write_constants_u256::<92, 4>(&*v2::schraderbrau::RC4, "out/v2/schraderbrau/arc_t4.bin")?;
+    write_constants_u256::<4, 4>(&*v2::schraderbrau::FL4, "out/v2/schraderbrau/fl_t4.bin")?;
+    write_constants_u256::<4, 4>(&*v2::schraderbrau::PL4, "out/v2/schraderbrau/pl_t4.bin")?;
+    Ok(())
+}
+
 fn main() -> Result<()> {
     write_constants_v1_bls12_381_t3()?;
     write_constants_v1_bls12_381_t4()?;
@@ -153,5 +168,7 @@ fn main() -> Result<()> {
     write_constants_v2_bluesky_t4()?;
     write_constants_v2_goldilocks_t12()?;
     write_constants_v2_goldilocks_t16()?;
+    write_constants_v2_schraderbrau_t3()?;
+    write_constants_v2_schraderbrau_t4()?;
     Ok(())
 }
