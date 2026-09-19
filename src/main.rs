@@ -7,6 +7,7 @@ mod v1 {
     pub mod bls12_381;
     pub mod bluesky;
     pub mod goldilocks;
+    pub mod koalabear;
     pub mod schraderbrau;
 }
 
@@ -18,6 +19,21 @@ mod v2 {
 }
 
 mod utils;
+
+fn write_constants_u32<const N: usize, const M: usize>(
+    values: &Vec<Vec<u32>>,
+    file_name: &str,
+) -> Result<()> {
+    assert_eq!(values.len(), N);
+    let mut file = File::create(file_name)?;
+    for i in 0..N {
+        assert_eq!(values[i].len(), M);
+        for j in 0..M {
+            file.write(values[i][j].to_le_bytes().as_slice())?;
+        }
+    }
+    Ok(())
+}
 
 fn write_constants_u64<const N: usize, const M: usize>(
     values: &Vec<Vec<u64>>,
@@ -82,6 +98,30 @@ fn write_constants_v1_goldilocks_t12() -> Result<()> {
 fn write_constants_v1_goldilocks_t16() -> Result<()> {
     write_constants_u64::<30, 16>(&*v1::goldilocks::RC16, "out/v1/goldilocks/arc_t16.bin")?;
     write_constants_u64::<16, 16>(&*v1::goldilocks::MDS16, "out/v1/goldilocks/mds_t16.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_koalabear_t24() -> Result<()> {
+    write_constants_u32::<31, 24>(
+        &v1::koalabear::RC24
+            .chunks(24)
+            .map(|chunk| chunk.iter().copied().collect())
+            .collect(),
+        "out/v1/koalabear/arc_t24.bin",
+    )?;
+    write_constants_u32::<24, 24>(&*v1::koalabear::MDS24, "out/v1/koalabear/mds_t24.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_koalabear_t32() -> Result<()> {
+    write_constants_u32::<39, 32>(
+        &v1::koalabear::RC32
+            .chunks(32)
+            .map(|chunk| chunk.iter().copied().collect())
+            .collect(),
+        "out/v1/koalabear/arc_t32.bin",
+    )?;
+    write_constants_u32::<32, 32>(&*v1::koalabear::MDS32, "out/v1/koalabear/mds_t32.bin")?;
     Ok(())
 }
 
@@ -160,6 +200,8 @@ fn main() -> Result<()> {
     write_constants_v1_bluesky_t4()?;
     write_constants_v1_goldilocks_t12()?;
     write_constants_v1_goldilocks_t16()?;
+    write_constants_v1_koalabear_t24()?;
+    write_constants_v1_koalabear_t32()?;
     write_constants_v1_schraderbrau_t3()?;
     write_constants_v1_schraderbrau_t4()?;
     write_constants_v2_bls12_381_t3()?;
