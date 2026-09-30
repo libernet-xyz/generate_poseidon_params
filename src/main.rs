@@ -128,6 +128,12 @@ fn write_constants_v1_goldilocks_t16() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v1_goldilocks_t20() -> Result<()> {
+    write_constants_u64::<30, 20>(&*v1::goldilocks::RC20, "out/v1/goldilocks/arc_t20.bin")?;
+    write_constants_u64::<20, 20>(&*v1::goldilocks::MDS20, "out/v1/goldilocks/mds_t20.bin")?;
+    Ok(())
+}
+
 fn write_constants_v1_koalabear_t24() -> Result<()> {
     write_constants_u32::<31, 24>(&v1::koalabear::RC24, "out/v1/koalabear/arc_t24.bin")?;
     write_constants_u32::<24, 24>(&*v1::koalabear::MDS24, "out/v1/koalabear/mds_t24.bin")?;
@@ -226,6 +232,7 @@ fn main() -> Result<()> {
     write_constants_v1_bluesky_t5_x7()?;
     write_constants_v1_goldilocks_t12()?;
     write_constants_v1_goldilocks_t16()?;
+    write_constants_v1_goldilocks_t20()?;
     write_constants_v1_koalabear_t24()?;
     write_constants_v1_koalabear_t32()?;
     write_constants_v1_schraderbrau_t3()?;
