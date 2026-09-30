@@ -152,6 +152,12 @@ fn write_constants_v1_schraderbrau_t4() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v1_schraderbrau_t5() -> Result<()> {
+    write_constants_u256::<92, 5>(&*v1::schraderbrau::RC5, "out/v1/schraderbrau/arc_t5.bin")?;
+    write_constants_u256::<5, 5>(&*v1::schraderbrau::MDS5, "out/v1/schraderbrau/mds_t5.bin")?;
+    Ok(())
+}
+
 fn write_constants_v2_bls12_381_t3() -> Result<()> {
     write_constants_u256::<64, 3>(&*v2::bls12_381::RC3, "out/v2/bls12_381/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v2::bls12_381::FL3, "out/v2/bls12_381/fl_t3.bin")?;
@@ -224,6 +230,7 @@ fn main() -> Result<()> {
     write_constants_v1_koalabear_t32()?;
     write_constants_v1_schraderbrau_t3()?;
     write_constants_v1_schraderbrau_t4()?;
+    write_constants_v1_schraderbrau_t5()?;
     write_constants_v2_bls12_381_t3()?;
     write_constants_v2_bls12_381_t4()?;
     write_constants_v2_bluesky_t3()?;
