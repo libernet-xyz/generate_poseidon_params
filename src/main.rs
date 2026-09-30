@@ -146,6 +146,12 @@ fn write_constants_v1_koalabear_t32() -> Result<()> {
     Ok(())
 }
 
+fn write_constants_v1_koalabear_t40() -> Result<()> {
+    write_constants_u32::<46, 40>(&v1::koalabear::RC40, "out/v1/koalabear/arc_t40.bin")?;
+    write_constants_u32::<40, 40>(&*v1::koalabear::MDS40, "out/v1/koalabear/mds_t40.bin")?;
+    Ok(())
+}
+
 fn write_constants_v1_schraderbrau_t3() -> Result<()> {
     write_constants_u256::<91, 3>(&*v1::schraderbrau::RC3, "out/v1/schraderbrau/arc_t3.bin")?;
     write_constants_u256::<3, 3>(&*v1::schraderbrau::MDS3, "out/v1/schraderbrau/mds_t3.bin")?;
@@ -235,6 +241,7 @@ fn main() -> Result<()> {
     write_constants_v1_goldilocks_t20()?;
     write_constants_v1_koalabear_t24()?;
     write_constants_v1_koalabear_t32()?;
+    write_constants_v1_koalabear_t40()?;
     write_constants_v1_schraderbrau_t3()?;
     write_constants_v1_schraderbrau_t4()?;
     write_constants_v1_schraderbrau_t5()?;
