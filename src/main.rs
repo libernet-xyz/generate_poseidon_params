@@ -74,15 +74,27 @@ fn write_constants_v1_bls12_381_t4() -> Result<()> {
     Ok(())
 }
 
-fn write_constants_v1_bluesky_t3() -> Result<()> {
-    write_constants_u256::<64, 3>(&*v1::bluesky::RC3, "out/v1/bluesky/arc_t3.bin")?;
-    write_constants_u256::<3, 3>(&*v1::bluesky::MDS3, "out/v1/bluesky/mds_t3.bin")?;
+fn write_constants_v1_bluesky_t3_x5() -> Result<()> {
+    write_constants_u256::<64, 3>(&*v1::bluesky::RC3_5, "out/v1/bluesky/arc_t3_x5.bin")?;
+    write_constants_u256::<3, 3>(&*v1::bluesky::MDS3_5, "out/v1/bluesky/mds_t3_x5.bin")?;
     Ok(())
 }
 
-fn write_constants_v1_bluesky_t4() -> Result<()> {
-    write_constants_u256::<64, 4>(&*v1::bluesky::RC4, "out/v1/bluesky/arc_t4.bin")?;
-    write_constants_u256::<4, 4>(&*v1::bluesky::MDS4, "out/v1/bluesky/mds_t4.bin")?;
+fn write_constants_v1_bluesky_t4_x5() -> Result<()> {
+    write_constants_u256::<64, 4>(&*v1::bluesky::RC4_5, "out/v1/bluesky/arc_t4_x5.bin")?;
+    write_constants_u256::<4, 4>(&*v1::bluesky::MDS4_5, "out/v1/bluesky/mds_t4_x5.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_bluesky_t3_x7() -> Result<()> {
+    write_constants_u256::<54, 3>(&*v1::bluesky::RC3_7, "out/v1/bluesky/arc_t3_x7.bin")?;
+    write_constants_u256::<3, 3>(&*v1::bluesky::MDS3_7, "out/v1/bluesky/mds_t3_x7.bin")?;
+    Ok(())
+}
+
+fn write_constants_v1_bluesky_t4_x7() -> Result<()> {
+    write_constants_u256::<54, 4>(&*v1::bluesky::RC4_7, "out/v1/bluesky/arc_t4_x7.bin")?;
+    write_constants_u256::<4, 4>(&*v1::bluesky::MDS4_7, "out/v1/bluesky/mds_t4_x7.bin")?;
     Ok(())
 }
 
@@ -181,8 +193,10 @@ fn write_constants_v2_schraderbrau_t4() -> Result<()> {
 fn main() -> Result<()> {
     write_constants_v1_bls12_381_t3()?;
     write_constants_v1_bls12_381_t4()?;
-    write_constants_v1_bluesky_t3()?;
-    write_constants_v1_bluesky_t4()?;
+    write_constants_v1_bluesky_t3_x5()?;
+    write_constants_v1_bluesky_t4_x5()?;
+    write_constants_v1_bluesky_t3_x7()?;
+    write_constants_v1_bluesky_t4_x7()?;
     write_constants_v1_goldilocks_t12()?;
     write_constants_v1_goldilocks_t16()?;
     write_constants_v1_koalabear_t24()?;
